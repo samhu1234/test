@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nginx
+  namespace: default
+spec:
+  selector:
+    app: myapp
+    release: nginx
+  type: NodePort
+  ports:
+  - name: nginx
+    nodePort: 30088
+    port: 80
+    targetPort: 80
+                

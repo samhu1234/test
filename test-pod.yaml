@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: app
+  namespace: default
+spec:
+  volumes:
+  - name: pv001
+    hostPath:
+      path: /mnt/pv001
+      type: DirectoryOrCreate
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: pv001
+      mountPath: /usr/share/nginx/html
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: app-nginx
+  namespace: default
+spec:
+  volumes:
+  - name: pv002
+    hostPath:
+      path: /mnt/pv002
+      type: DirectoryOrCreate
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: pv002
+      mountPath: /usr/share/nginx/html

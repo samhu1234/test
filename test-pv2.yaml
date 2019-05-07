@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv003
+  labels:
+   release: linux
+spec:
+  accessModes:
+  - ReadWriteMany
+  hostPath:
+    path: /mnt/pv003
+    type: DirectoryOrCreate 
+  capacity:
+    storage: 5G
+  storageClassName: "nginx"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv004
+  labels:
+   release: linux
+spec:
+  accessModes:
+  - ReadWriteMany
+  hostPath:
+    path: /mnt/pv004
+    type: DirectoryOrCreate
+  storageClassName: "nginx"
+  capacity:
+    storage: 5G
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv005
+  labels:
+   release: linux
+spec:
+  accessModes:
+  - ReadWriteMany
+  hostPath:
+    path: /mnt/pv005
+    type: DirectoryOrCreate
+  storageClassName: "nginx"
+  capacity:
+    storage: 10G

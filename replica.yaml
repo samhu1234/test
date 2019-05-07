@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+     matchLabels:
+        app: myapp
+        release: centos
+  template:
+     metadata:
+       name: myapp
+       namespace: default
+       labels:
+         app: myapp
+         release: centos
+         diskType: ssd
+     spec:
+       containers:
+       - name: nginx
+         image: nginx
+         imagePullPolicy: IfNotPresent
+         ports:
+         - name: nginx
+           containerPort: 80
+                

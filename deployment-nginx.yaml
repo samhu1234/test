@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+     matchLabels:
+        app: myapp
+        diskType: ssd
+  template:
+     metadata:
+       namespace: default
+       labels:
+         app: myapp
+         release: nginx
+         diskType: ssd
+     spec:
+       containers:
+       - name: nginx
+         image: nginx
+         imagePullPolicy: IfNotPresent
+         ports:
+         - name: nginx
+           containerPort: 80
+                
